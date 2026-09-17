@@ -1,3 +1,4 @@
+
 name: Build Diário de Horas APK
 
 on:
@@ -24,10 +25,6 @@ jobs:
         run: |
           unzip -o DiarioDeHoras_GitHub_Corrigido.zip -d ./projeto
 
-      - name: Aceitar licenças Android
-        run: |
-          yes | sdkmanager --licenses || true
-
       - name: Configurar Android SDK
         run: |
           echo "ANDROID_HOME=/usr/local/lib/android/sdk" >> "$GITHUB_ENV"
@@ -35,10 +32,15 @@ jobs:
           echo "/usr/local/lib/android/sdk/cmdline-tools/latest/bin" >> "$GITHUB_PATH"
           echo "/usr/local/lib/android/sdk/platform-tools" >> "$GITHUB_PATH"
 
-      - name: Instalar componentes Android
+      - name: Aceitar licenças Android
         run: |
           yes | sdkmanager --licenses || true
-          sdkmanager "platform-tools" "platforms;android-35" "build-tools;35.0.0"
+
+      - name: Instalar componentes Android
+        run: |
+          sdkmanager "platform-tools"
+          sdkmanager "platforms;android-35"
+          sdkmanager "build-tools;35.0.0"
 
       - name: Instalar Gradle
         run: |
