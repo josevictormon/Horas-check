@@ -1,0 +1,18 @@
+      - name: Instalar Gradle
+        run: |
+          wget -q https://services.gradle.org/distributions/gradle-8.11.1-bin.zip
+          unzip -q gradle-8.11.1-bin.zip
+          echo "$PWD/gradle-8.11.1/bin" >> "$GITHUB_PATH"
+
+      - name: Preparar projeto Android
+        run: |
+          unzip -o DiarioDeHoras_GitHub_Corrigido.zip -d .
+
+      - name: Compilar APK
+        run: gradle assembleDebug
+
+      - name: Disponibilizar APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: DiarioDeHoras-apk
+          path: app/build/outputs/apk/debug/app-debug.apk
