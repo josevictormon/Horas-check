@@ -23,7 +23,6 @@ jobs:
       - name: Preparar projeto Android
         run: |
           unzip -o DiarioDeHoras_GitHub_Corrigido.zip -d ./projeto
-          cp -r ./projeto/DiarioDeHoras_GitHub_Corrigido/. ./projeto/
 
       - name: Instalar Android Command Line Tools
         run: |
