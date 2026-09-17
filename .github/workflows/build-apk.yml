@@ -23,7 +23,7 @@ jobs:
 
       - name: Preparar projeto Android
         run: |
-         unzip -o DiarioDeHoras_V2.zip -d ./projeto
+         unzip -o DiarioDeHoras_V2_Corrigido.zip -d ./projeto
 
       - name: Configurar Android SDK
         run: |
